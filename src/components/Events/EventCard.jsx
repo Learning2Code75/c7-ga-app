@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Dialog } from "@mui/material";
 import { useSelector } from "react-redux";
+import { imgUrls } from "../../imgs/imgUrls";
 
 export default function EventCard({ eve }) {
   const [isRespOpen, setIsRespOpen] = React.useState(false);
@@ -108,7 +109,7 @@ export default function EventCard({ eve }) {
                             backgroundColor: "rgb(0,0,0)",
                             opacity: "75%",
                           }}
-                          src="/imgs/selfie.png"
+                          src={imgUrls["selfie"]}
                           alt="image"
                           height="150"
                           width="150"
@@ -121,7 +122,7 @@ export default function EventCard({ eve }) {
                             backgroundColor: "rgb(0,0,0)",
                             opacity: "75%",
                           }}
-                          src="/imgs/food.png"
+                          src={imgUrls["food"]}
                           alt="image"
                           height="150"
                           width="150"

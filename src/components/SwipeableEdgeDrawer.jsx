@@ -15,10 +15,12 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from "@mui/material";
 import { BsFillCalendarEventFill } from "react-icons/bs";
 import { RiRoadMapFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
+import ToggleColorMode from "./ToggleColorMode";
 const drawerBleeding = 56;
 
 const Root = styled("div")(({ theme }) => ({
@@ -46,6 +48,7 @@ const Puller = styled(Box)(({ theme }) => ({
 function SwipeableEdgeDrawer(props) {
   const { window } = props;
   const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -75,11 +78,12 @@ function SwipeableEdgeDrawer(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            background: "rgba(0,0,0,.85)",
+            background: theme.palette.primary.contrastText,
             height: "3.4rem",
           }}
         >
           <Button onClick={toggleDrawer(true)}>App Features</Button>
+          <ToggleColorMode />
         </div>
       </Box>
       <SwipeableDrawer
@@ -122,7 +126,7 @@ function SwipeableEdgeDrawer(props) {
             <ListItem
               disablePadding
               onClick={() => {
-                props.handleNavClick("/");
+                props.handleNavClick("/c7-ga-app");
               }}
             >
               <ListItemButton>

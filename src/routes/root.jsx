@@ -1,9 +1,14 @@
+import { createTheme, ThemeProvider } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import SwipeableEdgeDrawer from "../components/SwipeableEdgeDrawer";
 import Login from "../pages/Login";
+export const ColorModeContext = React.createContext({
+  toggleColorMode: () => {},
+});
+
 export default function Root() {
   const auth = useSelector((state) => state?.auth);
   console.log(auth);
@@ -14,31 +19,56 @@ export default function Root() {
     setOpenNav(!openNav);
     navigate(path);
   };
+
+  const [mode, setMode] = React.useState("light");
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+      },
+    }),
+    []
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode]
+  );
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   }, []);
   return (
-    <>
-      {isLoading ? (
-        <Loader isHome={true} isLoading={isLoading} />
-      ) : auth?.user?.id !== undefined ? (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
         <>
-          <SwipeableEdgeDrawer handleNavClick={handleNavClick} />
-          <div
-            style={{
-              marginTop: "3.4rem",
-              marginBottom: "5rem",
-              width: "100vw",
-            }}
-          >
-            <Outlet />
-          </div>
+          {isLoading ? (
+            <Loader isHome={true} isLoading={isLoading} />
+          ) : auth?.user?.id !== undefined ? (
+            <>
+              <SwipeableEdgeDrawer handleNavClick={handleNavClick} />
+              <div
+                style={{
+                  marginTop: "3.4rem",
+                  marginBottom: "5rem",
+                  width: "100vw",
+                }}
+              >
+                <Outlet />
+              </div>
+            </>
+          ) : (
+            <Login />
+          )}
         </>
-      ) : (
-        <Login />
-      )}
-    </>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }

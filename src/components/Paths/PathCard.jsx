@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Dialog } from "@mui/material";
+import { imgUrls } from "../../imgs/imgUrls";
 
 export default function PathCard({ path }) {
   const [open, setOpen] = React.useState(false);
@@ -89,7 +90,7 @@ export default function PathCard({ path }) {
                           backgroundColor: "rgb(0,0,0)",
                           opacity: "75%",
                         }}
-                        src="/imgs/travel.png"
+                        src={imgUrls["travel"]}
                         alt="image"
                         height="150"
                         width="150"

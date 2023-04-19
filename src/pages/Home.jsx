@@ -1,5 +1,5 @@
 import React from "react";
-
+import { imgUrls } from "../imgs/imgUrls";
 const Home = () => {
   return (
     <div
@@ -17,7 +17,7 @@ const Home = () => {
           backgroundColor: "rgb(0,0,0)",
           opacity: "75%",
         }}
-        src="/imgs/home.png"
+        src={imgUrls["home"]}
         alt="image"
         height="350"
         width="350"

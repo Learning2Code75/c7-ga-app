@@ -26,28 +26,28 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/c7-ga-app",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: "/c7-ga-app/",
         element: <Home />,
       },
       {
-        path: "contacts/:contactId",
+        path: "/c7-ga-app/contacts/:contactId",
         element: <Contact />,
       },
       {
-        path: "posts",
+        path: "/c7-ga-app/posts",
         element: <Posts />,
       },
       {
-        path: "events",
+        path: "/c7-ga-app/events",
         element: <Events />,
       },
       {
-        path: "paths",
+        path: "/c7-ga-app/paths",
         element: <Paths />,
       },
       // {
@@ -57,12 +57,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-  },
-});
 
 const persistConfig = {
   key: "persist-key",
@@ -80,10 +74,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <RouterProvider router={router} />
-            {/* <ReactQueryDevtools /> */}
-          </ThemeProvider>
+          <RouterProvider router={router} />
+          {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
       </PersistGate>
     </Provider>
