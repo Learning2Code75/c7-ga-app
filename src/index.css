@@ -100,3 +100,25 @@ body {
 .PageContainer{
   min-height: calc(100vh - 10rem);
 }
+
+.LoginContainer{
+  display:flex;
+  flex-direction: column;
+  width:calc(100vw - 2rem);
+  justify-content: center;
+  padding:1rem;
+}
+
+input,textarea{
+  border:2px solid #aaa;
+  border-radius: 4px;
+  outline:none;
+  padding:8px;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+input:focus,textarea:focus{
+  border-color:dodgerblue;
+  box-shadow: 0 0 8px 0 dodgerblue;
+}

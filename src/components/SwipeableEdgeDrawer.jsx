@@ -17,7 +17,7 @@ import {
   ListItemText,
   useTheme,
 } from "@mui/material";
-import { BsFillCalendarEventFill } from "react-icons/bs";
+import { BsFillCalendarEventFill, BsFillChatDotsFill } from "react-icons/bs";
 import { RiRoadMapFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
 import ToggleColorMode from "./ToggleColorMode";
@@ -165,6 +165,19 @@ function SwipeableEdgeDrawer(props) {
                   <RiRoadMapFill />
                 </ListItemIcon>
                 <ListItemText>Paths</ListItemText>
+              </ListItemButton>
+            </ListItem>
+            <ListItem
+              disablePadding
+              onClick={() => {
+                props.handleNavClick("chat/");
+              }}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <BsFillChatDotsFill />
+                </ListItemIcon>
+                <ListItemText>Chat</ListItemText>
               </ListItemButton>
             </ListItem>
             {/* <ListItem

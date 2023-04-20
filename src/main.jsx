@@ -21,6 +21,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import storage from "redux-persist/lib/storage";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import Login from "./pages/Login";
+import Chat from "./pages/Chat";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/c7-ga-app/paths",
         element: <Paths />,
+      },
+      {
+        path: "/c7-ga-app/chat",
+        element: <Chat />,
       },
       // {
       //   path: "users",

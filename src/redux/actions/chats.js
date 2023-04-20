@@ -1,28 +1,22 @@
 // import * as api from "../../api";
 
 import { wait } from "../../utils/helpers";
-import { eventsData } from "../../__mocks__/events";
-export const getEvents =
-  (user, s, f = (msg) => {}) =>
-  async (dispatch, getState) => {
-    user = getState()?.auth?.user;
-    console.log(user);
+import { chatsData } from "../../__mocks__/chats";
+export const getChats =
+  (s, f = (msg) => {}) =>
+  async (dispatch) => {
     try {
       // const { data } = await api.fetchUsers();
       await wait(2000);
-      let data = eventsData;
-      let userEventIds = [...user.events];
-      console.log(userEventIds);
-      data = data.filter((d) => userEventIds.includes(d.id));
-
-      dispatch({ type: "FETCH_ALL_EVENTS", payload: data });
+      let data = chatsData;
+      dispatch({ type: "FETCH_ALL_CHATS", payload: data });
       s();
     } catch (err) {
       f(err);
       console.log(err);
     }
   };
-export const createEvent = (formData) => async (dispatch) => {
+export const createChat = (formData) => async (dispatch) => {
   try {
     // const { data } = await api.signUp(formData);
     // dispatch({ type: "CREATE_USER", payload: data.result.data });
@@ -30,7 +24,7 @@ export const createEvent = (formData) => async (dispatch) => {
     console.log(error);
   }
 };
-export const updateEvent = (userId, userData) => async (dispatch) => {
+export const updateChat = (userId, userData) => async (dispatch) => {
   try {
     // console.log(userId, userData);
     // const { data } = await api.updateUser(userId, userData);
@@ -41,7 +35,7 @@ export const updateEvent = (userId, userData) => async (dispatch) => {
   }
 };
 
-export const deleteEvent = (userId) => async (dispatch) => {
+export const deleteChat = (userId) => async (dispatch) => {
   try {
     // console.log(userId);
     // await api.deleteUser(userId);

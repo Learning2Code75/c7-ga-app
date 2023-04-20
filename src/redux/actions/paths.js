@@ -3,9 +3,10 @@
 import { wait } from "../../utils/helpers";
 import { pathsData } from "../../__mocks__/paths";
 
-export const getPaths = (user, s, f) => async (dispatch) => {
+export const getPaths = (user, s, f) => async (dispatch, getState) => {
   try {
     // const { data } = await api.fetchUsers();
+    user = getState()?.auth?.user;
     await wait(2000);
     let data = pathsData;
     console.log(data);

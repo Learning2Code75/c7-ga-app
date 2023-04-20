@@ -2,7 +2,7 @@ export default (
   auth = {
     user: {
       id: "uid1",
-      name: "Neel Choksi",
+      name: undefined,
       phone: "8484848484",
       addr: "Andheri west , Mumbai ",
       rsvp: [

@@ -51,7 +51,7 @@ export default function Root() {
         <>
           {isLoading ? (
             <Loader isHome={true} isLoading={isLoading} />
-          ) : auth?.user?.id !== undefined ? (
+          ) : auth?.user?.name !== undefined ? (
             <>
               <SwipeableEdgeDrawer handleNavClick={handleNavClick} />
               <div
